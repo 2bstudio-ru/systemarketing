@@ -1,0 +1,72 @@
+:root {
+  --color-bg: #020202;
+  --color-ink: #020202;
+  --color-white: #ffffff;
+  --color-mint: #60f4e0;
+  --color-coral: #ff8562;
+  --color-menu: #1d2b2c;
+  --color-paper: #f7f7f7;
+  --color-paper-2: #f0f1f1;
+  --color-muted: #8a8a8a;
+  --color-overlay: rgb(2 2 2 / 50%);
+
+  --font-display: 'TTAutonomous', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+  --font-ui: 'SF Pro Display', -apple-system, BlinkMacSystemFont, sans-serif;
+
+  --radius-btn: 2px;
+  --pad: 16px;
+  --max: 360px;
+  --artboard: 360;
+
+  /*
+    Tilda Zero upscale:window — sizes authored for 360px artboard,
+    then scaled to the real viewport / phone screen width.
+  */
+  --u: calc(100svw / var(--artboard));
+
+  --fs-hero: calc(29 * var(--u));
+  --lh-hero: 1.15;
+  --ls-display: -0.5px;
+  --fs-display: calc(32 * var(--u));
+  --lh-display: 1.15;
+  --fs-display-md: calc(16 * var(--u));
+  --lh-display-md: 1.3;
+  --ls-display-md: -0.2px;
+  --fs-display-sm: calc(15 * var(--u));
+  --fs-kicker: calc(13 * var(--u));
+  --fs-body: calc(13 * var(--u));
+  --lh-body: 1.15;
+  --fs-callout: calc(18 * var(--u));
+  --lh-callout: 1.05;
+  --fs-ui: calc(11 * var(--u));
+  --fs-badge: calc(10 * var(--u));
+  --fs-micro: calc(8 * var(--u));
+  --chrome-h: calc(35 * var(--u));
+  --icon: calc(29 * var(--u));
+  --menu-w: calc(84 * var(--u));
+  --logo-chrome-w: calc(110 * var(--u));
+  --callout-h: calc(23 * var(--u));
+  --pad-hero-x: calc(8 * var(--u));
+  --pad-hero-y: calc(9 * var(--u));
+  /* Air between section content (~72 on the 360 artboard) */
+  --section-gap: calc(72 * var(--u));
+
+  --z-header: 40;
+  --z-menu: 50;
+  --z-modal: 60;
+  --z-preloader: 100;
+
+  --ease: cubic-bezier(0.42, 0, 0.58, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

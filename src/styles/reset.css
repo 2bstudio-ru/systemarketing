@@ -1,0 +1,97 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+@supports not (overflow: clip) {
+  html,
+  body,
+  #root {
+    overflow-x: hidden;
+  }
+}
+
+@media (min-width: 640px) {
+  html,
+  body,
+  #root {
+    height: 100%;
+    max-height: 100%;
+    overflow: hidden;
+  }
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-mono);
+  background: #fff;
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+video {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+a {
+  color: inherit;
+}
+
+button {
+  font: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ul {
+  margin: 0;
+  max-width: 100%;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+:focus-visible {
+  outline: 2px solid #2015ff;
+  outline-offset: 4px;
+}
+
+.is-scroll-locked {
+  overscroll-behavior: none;
+  touch-action: none;
+}

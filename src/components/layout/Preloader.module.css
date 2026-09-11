@@ -1,0 +1,56 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-preloader);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  opacity: 1;
+  transition: opacity 0.5s var(--ease, ease);
+}
+
+.leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bg {
+  position: absolute;
+  inset: 0;
+  background-color: #2a353c;
+  background-image:
+    linear-gradient(rgb(12 18 20 / 42%), rgb(12 18 20 / 42%)),
+    url('/boot-bg.jpg');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.logoStage {
+  position: relative;
+  z-index: 1;
+  width: min(206px, 57vw);
+  aspect-ratio: 274 / 303;
+}
+
+.logoDim,
+.logoBright {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.logoDim {
+  position: relative;
+  z-index: 0;
+}
+
+.logoBright {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  will-change: clip-path;
+}

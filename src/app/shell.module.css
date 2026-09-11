@@ -1,0 +1,251 @@
+.app {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  min-height: 100%;
+  /* overflow-x other than visible breaks position:sticky vs .phoneScreen */
+  background: #fff;
+  color: var(--color-ink);
+  overflow-anchor: none;
+}
+
+.desktop {
+  box-sizing: border-box;
+  position: relative;
+  height: 100%;
+  max-height: 100svh;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  column-gap: clamp(24px, 3.5vw, 50px);
+  padding: 0 clamp(48px, 8.7vw, 125px);
+  color: #fff;
+  background: var(--desktop-bg) 99.99% 48.472% / cover no-repeat #020202;
+}
+
+.desktop > * {
+  min-width: 0;
+  min-height: 0;
+}
+
+.side {
+  position: relative;
+  z-index: 1;
+  max-width: 403px;
+  justify-self: start;
+  align-self: center;
+}
+
+.sideRight {
+  position: relative;
+  z-index: 1;
+  max-width: 460px;
+  justify-self: end;
+  align-self: center;
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.05vw, 18px);
+  line-height: 1.3;
+  font-weight: 500;
+  white-space: pre-line;
+}
+
+.logo {
+  width: min(390px, 100%);
+  height: auto;
+  margin-bottom: 18px;
+}
+
+.tagline {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.05vw, 18px);
+  line-height: 1.3;
+  font-weight: 500;
+}
+
+.phone {
+  /* Tilda Zero 1920: frame 380×782, screen 350×699 */
+  --phone-h: min(782px, calc(100svh - 24px));
+  position: relative;
+  z-index: 2;
+  height: var(--phone-h);
+  width: calc(var(--phone-h) * 380 / 782);
+  flex-shrink: 0;
+  filter: drop-shadow(0 28px 56px rgb(0 0 0 / 50%));
+}
+
+.bezel {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* Above .screen so chrome/header cannot paint over the device frame */
+  z-index: 10;
+}
+
+/* White strip under time / Dynamic Island / battery */
+.statusPlate {
+  position: absolute;
+  left: 3.16%;
+  width: 93.42%;
+  top: 0.9%;
+  height: 8.7%;
+  background: #fff;
+  border-radius: 18% 18% 0 0 / 70% 70% 0 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.status {
+  position: absolute;
+  top: 2.43%;
+  left: 3.95%;
+  width: 92.11%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.clock {
+  position: absolute;
+  top: 4.73%;
+  left: 13.42%;
+  z-index: 5;
+  font-family: var(--font-ui);
+  font-size: 14px;
+  font-weight: 600;
+  color: #111;
+  pointer-events: none;
+}
+
+.screen {
+  position: absolute;
+  left: 3.95%;
+  width: 92.11%;
+  top: 9.34%;
+  height: 89.39%;
+  z-index: 0;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 0 0 11% 11% / 0 0 5.2% 5.2%;
+  /* Contain sticky chrome (z-header: 40) so it cannot paint over the bezel */
+  isolation: isolate;
+  /* size (not only inline-size) so 100cqh on hero resolves to phone height */
+  container-type: size;
+  container-name: phone;
+  /*
+    Tokens on .screen so portaled menu/modal (siblings of scroll) inherit --u.
+    Same as Tilda artboard upscale:window.
+  */
+  --u: calc(100cqi / 360);
+  --fs-hero: calc(29 * var(--u));
+  --fs-display: calc(32 * var(--u));
+  --fs-display-md: calc(16 * var(--u));
+  --fs-display-sm: calc(15 * var(--u));
+  --fs-kicker: calc(13 * var(--u));
+  --fs-body: calc(13 * var(--u));
+  --fs-callout: calc(18 * var(--u));
+  --fs-ui: calc(11 * var(--u));
+  --fs-badge: calc(10 * var(--u));
+  --fs-micro: calc(8 * var(--u));
+  --chrome-h: calc(35 * var(--u));
+  --icon: calc(29 * var(--u));
+  --menu-w: calc(84 * var(--u));
+  --logo-chrome-w: calc(110 * var(--u));
+  --callout-h: calc(23 * var(--u));
+  --pad-hero-x: calc(8 * var(--u));
+  --pad-hero-y: calc(9 * var(--u));
+  --section-gap: calc(72 * var(--u));
+}
+
+.screenScroll {
+  height: 100%;
+  overflow: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overflow-anchor: none;
+}
+
+.screenScroll > .app {
+  min-height: 100%;
+}
+
+@media (max-width: 1919px) {
+  .phone {
+    --phone-h: min(761px, calc(100svh - 24px));
+    width: calc(var(--phone-h) * 370 / 761);
+  }
+}
+
+@media (max-width: 1599px) {
+  .side {
+    max-width: 413px;
+  }
+
+  .sideRight {
+    max-width: 395px;
+  }
+
+  .phone {
+    --phone-h: min(617px, calc(100svh - 24px));
+    width: calc(var(--phone-h) * 300 / 617);
+  }
+
+  .clock {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 1399px) {
+  .logo {
+    width: min(320px, 100%);
+  }
+
+  .sideRight,
+  .tagline {
+    font-size: 16px;
+  }
+
+  .side {
+    max-width: 357px;
+  }
+
+  .sideRight {
+    max-width: 333px;
+  }
+
+  .clock {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .desktop {
+    padding: 0 clamp(24px, 4vw, 48px);
+    column-gap: 20px;
+  }
+
+  .logo {
+    width: min(250px, 100%);
+  }
+}
+
+@media (max-width: 959px) {
+  .desktop {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    align-content: center;
+    padding: 20px;
+  }
+
+  .side,
+  .sideRight {
+    display: none;
+  }
+
+  .phone {
+    --phone-h: min(86svh, 782px);
+    width: calc(var(--phone-h) * 380 / 782);
+  }
+}

@@ -1,0 +1,124 @@
+.root {
+  position: fixed;
+  inset: 0;
+  z-index: var(--z-modal);
+  display: grid;
+  place-items: center;
+  padding: calc(20 * var(--u));
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+:global(.phoneScreen) .root {
+  position: absolute;
+}
+
+.backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  padding: 0;
+  background: rgb(36 36 36 / 30%);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+
+.card {
+  position: relative;
+  z-index: 1;
+  box-sizing: border-box;
+  width: calc(320 * var(--u));
+  max-width: 100%;
+  max-height: calc(100% - 24 * var(--u));
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: calc(20 * var(--u)) calc(20 * var(--u)) calc(28 * var(--u));
+  border-radius: 2px;
+  background: #f0f1f1;
+  color: #020202;
+  box-shadow: 0 3px 4px rgb(2 2 2 / 10%);
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  width: calc(25 * var(--u));
+  height: calc(25 * var(--u));
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.close img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.name {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  font-family: var(--font-mono);
+  font-size: calc(10 * var(--u));
+  line-height: 0.95;
+  font-weight: 500;
+  color: #020202;
+  white-space: nowrap;
+}
+
+.role {
+  margin: calc(10 * var(--u)) 0 0;
+  font-family: var(--font-display);
+  font-size: calc(11 * var(--u));
+  line-height: 1.27;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  text-transform: uppercase;
+  color: #020202;
+}
+
+.photo {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  margin: calc(16 * var(--u)) 0 0;
+  border-radius: 2px;
+  object-fit: cover;
+}
+
+.points {
+  margin: calc(16 * var(--u)) 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: calc(13 * var(--u));
+  line-height: 1.15;
+  font-weight: 500;
+  color: #020202;
+}
+
+.points li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: calc(6 * var(--u));
+  align-items: start;
+  margin-bottom: calc(10 * var(--u));
+  padding: 0;
+}
+
+.points li:last-child {
+  margin-bottom: 0;
+}
+
+.points li::before {
+  content: '•';
+  position: static;
+}
