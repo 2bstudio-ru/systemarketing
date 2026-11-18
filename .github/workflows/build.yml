@@ -30,8 +30,20 @@ jobs:
       - name: Lint
         run: npm run lint
 
+      - name: Preserve Pages custom domain
+        run: |
+          if [ -f docs/CNAME ]; then
+            cp docs/CNAME /tmp/pages-cname
+          fi
+
       - name: Build production site
         run: npm run build
+
+      - name: Restore Pages custom domain
+        run: |
+          if [ -f /tmp/pages-cname ]; then
+            cp /tmp/pages-cname docs/CNAME
+          fi
 
       - name: Commit updated Pages files
         if: github.event_name == 'push'
